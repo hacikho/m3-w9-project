@@ -5,11 +5,16 @@
 }
 
 <h2>ClockInOut</h2>
-<div>Hello @Model.Username</div>
-<div>
+<h4>Hello @Model.Username</h4>
+<div class="editor-field">
     @if (Model.CanClockIn)
     {
         <form action="@Url.Action("ClockIn", "TimeCard")" method="post">
+            <div>
+                <label>Project Name: </label>
+                @Html.TextBoxFor(m => m.Project)
+                @Html.HiddenFor(m => m.Project)
+            </div>
             <button>Clock-In</button>
             @Html.HiddenFor(m => m.Username)
         </form>
@@ -17,7 +22,7 @@
     else
     {
         <form action="@Url.Action("ClockOut", "TimeCard")" method="post">
-            <p>Clock Out Note</p>
+            <p>PLease Enter a Clock Out Note</p>
             @Html.TextAreaFor(m => m.Note)
             <button>Clock-Out</button>
             @Html.HiddenFor(m => m.Username)

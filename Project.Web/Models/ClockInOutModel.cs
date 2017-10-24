@@ -10,6 +10,7 @@ namespace Project.Web.Models
     {
         public string Username { get; set; }
         public bool CanClockIn { get; set; }
+        public string Project { get; set; }
         public string Note { get; set; }
     }
 }

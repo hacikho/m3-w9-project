@@ -5,10 +5,23 @@
 }
 
 <h2>Report</h2>
-@foreach(var item in Model)
-{
-    @item.UserName
-    @item.Project
-    @item.StartDate
-    @item.EndDate
-}
+<table border="1">
+    <tr>
+        <th>User Name</th>
+        <th>Project Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Notes</th>
+    </tr>
+   @foreach (var item in Model)
+   {
+       <tr>
+           <td>@item.UserName</td>
+           <td>@item.Project</td>
+           <td>@item.StartDate</td>
+           <td>@item.EndDate</td>
+           <td>@item.Notes</td>
+       </tr>
+   } 
+</table>
+

@@ -16,3 +16,7 @@ textarea {
     max-width: 280px;
 }
 
+.editor-field textarea {
+    width: 400px;
+    height: 100px;
+}

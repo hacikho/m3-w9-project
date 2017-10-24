@@ -12,9 +12,9 @@ namespace Project.Web.DAL
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["TimeCardDB"].ConnectionString;
         private string SQL_GetAllRecord = "Select * from timecard WHERE timecard.user_name = @username";
-        private string SQL_InsertTimeIn = "INSERT INTO timecard (user_name, start_datetime)VALUES(@username, @startdate)";
+        private string SQL_InsertTimeIn = "INSERT INTO timecard (user_name, start_datetime, project)VALUES(@username, @startdate, @project)";
         private string SQL_CheckClockOut = "Select * from timecard WHERE timecard.user_name = @username and timecard.end_datetime is null";
-        private string SQL_ClockOut = "UPDATE timecard SET timecard.end_datetime=@enddate, timecard.notes = @notes WHERE timecard.user_name =@username";
+        private string SQL_ClockOut = "UPDATE timecard SET timecard.end_datetime=@enddate, timecard.notes = @notes WHERE timecard.user_name =@username AND timecard.end_datetime IS NULL";
 
 
         public List<TimeCardModel> GetAllRecords(string username)
@@ -59,6 +59,7 @@ namespace Project.Web.DAL
                     SqlCommand cmd = new SqlCommand(SQL_InsertTimeIn, connection);
                     cmd.Parameters.AddWithValue("@username", r.UserName);
                     cmd.Parameters.AddWithValue("@startdate", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@project", r.Project);
                     int rowsAffected = cmd.ExecuteNonQuery();
                     return rowsAffected > 0;
                 }

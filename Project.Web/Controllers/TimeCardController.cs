@@ -41,6 +41,7 @@ namespace Project.Web.Controllers
         {
             TimeCardModel m = new TimeCardModel();
             m.UserName = input.Username;
+            m.Project = input.Project;
             dal.SaveNewRecord(m);
             return RedirectToAction("Report");
         }
