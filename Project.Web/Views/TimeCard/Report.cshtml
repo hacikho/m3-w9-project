@@ -1,0 +1,14 @@
+﻿@using Project.Web.Models;
+@model  List<TimeCardModel>
+@{
+    ViewBag.Title = "Report";
+}
+
+<h2>Report</h2>
+@foreach(var item in Model)
+{
+    @item.UserName
+    @item.Project
+    @item.StartDate
+    @item.EndDate
+}

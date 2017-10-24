@@ -1,0 +1,17 @@
+﻿@using Project.Web.Models;
+@model TimeCardModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+<form action="@Url.Action("ClockInOut", "TimeCard")" method="get">
+
+    <div>
+        @Html.LabelFor(m => m.UserName)
+        @Html.TextBoxFor(m => m.UserName)
+    </div>
+    <div>
+        <button>Go</button>
+    </div>
+</form>
