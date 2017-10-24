@@ -40,7 +40,7 @@ namespace Project.Web.Controllers
         public ActionResult ClockIn(ClockInOutModel input)
         {
             TimeCardModel m = new TimeCardModel();
-            m.UserName = Session["username"].ToString();
+            m.UserName = input.Username;
             dal.SaveNewRecord(m);
             return RedirectToAction("Report");
         }
@@ -49,11 +49,7 @@ namespace Project.Web.Controllers
         public ActionResult ClockOut(ClockInOutModel input)
         {
             TimeCardModel m = new TimeCardModel();
-            m.UserName = Session["username"].ToString();
-            if (Session["notes"] != null)
-            {
-
-            }
+            m.UserName = input.Username;
             m.Notes = input.Note;
 
             dal.ClockOut(m);
